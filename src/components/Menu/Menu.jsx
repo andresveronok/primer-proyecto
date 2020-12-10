@@ -1,6 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { AiOutlineShop } from 'react-icons/ai';
 
 function Menu(){
     return (
@@ -24,10 +25,11 @@ function Menu(){
                     <NavDropdown.Item href="#">Calzado</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#">¡SALE!</Nav.Link>
-                <Nav.Link href="#">Carrito</Nav.Link>
+                <Nav.Link href="#"><AiOutlineShop /></Nav.Link>
             </Navbar.Collapse>
         </Navbar>
     )
 }
 
 export default Menu;
+
