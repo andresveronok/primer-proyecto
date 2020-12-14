@@ -1,7 +1,6 @@
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 
-
 const Tarjetas = ({imagen, titulo, descripcion, precio}) => {
     return (
         <CardDeck>
