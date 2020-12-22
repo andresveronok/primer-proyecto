@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
+import ItemCount from '../Tarjetas/ItemCount'
 import {useState} from 'react'
 import './Tarjetas.css'
 
@@ -17,7 +18,6 @@ const Tarjetas = ({imagen, titulo, descripcion, precio, stock}) => {
             alert(`No se pudo agregar la cantidad de ${cantidad} productos al carrito porque supera al stock disponible (${stock}).`);
         }
     }
-
     return (
         <CardDeck>
             <Card>
@@ -30,14 +30,12 @@ const Tarjetas = ({imagen, titulo, descripcion, precio, stock}) => {
                     {precio}
                     <br></br>
                     <ButtonGroup>
-                        <Button variant="secondary" disabled={cantidad === 1 ? 'disabled' : null } onClick={() => setCantidad(cantidad - 1)}>-</Button>
-                        <h3> {cantidad} </h3>
-                        <Button variant="secondary" disabled={cantidad === stock ? 'disabled' : null } onClick={() => setCantidad(cantidad + 1)}>+</Button>
+                        <ItemCount cantidad = {cantidad} setCantidad = {setCantidad} stock = {stock}/>
                     </ButtonGroup>
                 </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                <Button variant="primary" size="lg" onClick={agregarCarrito}>Agregar al carrito</Button>
+                    <Button variant="primary" size="lg" onClick={agregarCarrito}>Agregar al carrito</Button>
                 </Card.Footer>
             </Card>
         </CardDeck>
