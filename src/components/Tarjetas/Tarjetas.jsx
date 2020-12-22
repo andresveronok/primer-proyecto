@@ -32,7 +32,7 @@ const Tarjetas = ({imagen, titulo, descripcion, precio, stock}) => {
                     <ButtonGroup>
                         <Button variant="secondary" disabled={cantidad === 1 ? 'disabled' : null } onClick={() => setCantidad(cantidad - 1)}>-</Button>
                         <h3> {cantidad} </h3>
-                        <Button variant="secondary" onClick={() => setCantidad(cantidad + 1)}>+</Button>
+                        <Button variant="secondary" disabled={cantidad === stock ? 'disabled' : null } onClick={() => setCantidad(cantidad + 1)}>+</Button>
                     </ButtonGroup>
                 </Card.Text>
                 </Card.Body>
