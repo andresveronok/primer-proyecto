@@ -4,7 +4,7 @@ import ProductoDetalle from './ProductoDetalle';
 const Producto = () => {
     const [producto, setProducto] = useState(null);
 
-    const getProduct = new Promise((resolve, reject) => {
+    const getProducto = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
                 id: 1, 
@@ -17,7 +17,7 @@ const Producto = () => {
     });
 
     useEffect(() => {
-        getProduct
+        getProducto
         .then(response => setProducto(response))
         .catch(error => console.log(error));
     }, []);

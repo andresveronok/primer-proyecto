@@ -11,4 +11,6 @@ const ProductoDetalle = ({item}) => {
     )
 }
 
+
+
 export default ProductoDetalle;
