@@ -1,13 +1,46 @@
+import {useState, useEffect} from 'react';
 import Tarjetas from '../Tarjetas/Tarjetas'
-import foto from '../../assets/pantalonMujer.jpg'
+import {listaProductos} from '../../assets/productos'
 
+const ProductsContainer = () => {
 
-function ProductsContainer() {
+  const [items, setItems] = useState([]);
+
+    const getProducts = new Promise((resolve, reject) => {
+      setTimeout(() => {
+          resolve(listaProductos);
+      }, 5000)
+    })
+
+      const getProducstFromDB = async () => {
+        try {
+            const result = await getProducts;
+            setItems(result);
+        } catch(error) {
+            alert('No podemos mostrar los productos en este momento');
+        }
+    }
+
+    useEffect(() => {
+        getProducstFromDB();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() =>  {
+        console.log(items)
+        items.map(item => console.log(item))
+    }, [items])
+
     return (
-      <>
-        <Tarjetas imagen = {foto} titulo = "Pantalon1" descripcion = "Descripcion1" precio = {250} stock={2}/>
-        <Tarjetas imagen = {foto} titulo = "Pantalon2" descripcion = "Descripcion2" precio = {300} stock={5}/>        
-      </>
+      <ul>
+        {
+          items.map(item => (
+            <li key = {item.id}>
+            <Tarjetas imagen = {item.imagen} titulo = {item.titulo} descripcion = {item.descripcion} precio = {item.precio} stock={item.stock}/>
+            </li>
+          ))
+        }
+      </ul>
     );
   }
   
