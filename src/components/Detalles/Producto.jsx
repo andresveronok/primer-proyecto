@@ -1,33 +1,43 @@
 import {useEffect, useState} from 'react';
 import ProductoDetalle from './ProductoDetalle';
+import {listaProductos} from '../../assets/productos'
+import {useParams} from 'react-router-dom'
 
 const Producto = () => {
     const [producto, setProducto] = useState(null);
 
+    const { itemid } = useParams;
+    console.log(itemid)
+
     const getProducto = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve({
-                id: 1, 
-                nombre: "Remera",
-                foto: "http://placehold.it/350x400",
-                descripcion: "Remera muy comoda de algodon",
-                precio: 800
-            })
+            const productoClickeado = listaProductos.find( producto => producto.id == itemid)
+            resolve(productoClickeado);
         }, 2000);
     });
+   
+    const getProducstFromDB = async () => {
+        try {
+            const result = await getProducto;
+            setProducto(result);
+        } catch(error) {
+            alert('No podemos mostrar los productos en este momento');
+        }
+    }
 
     useEffect(() => {
-        getProducto
-        .then(response => setProducto(response))
-        .catch(error => console.log(error));
-    }, []);
+        getProducstFromDB();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
             {
-                <div className="container">
-                    <ProductoDetalle item={producto} />
-                </div>
+                producto ?
+                <>
+                   <ProductoDetalle item = {producto}/>
+                </> :
+                <p>Cargando productos</p>
             }
         </>
     )

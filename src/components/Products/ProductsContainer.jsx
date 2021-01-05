@@ -1,21 +1,31 @@
 import {useState, useEffect} from 'react';
 import Tarjetas from '../Tarjetas/Tarjetas'
 import {listaProductos} from '../../assets/productos'
+import {useParams} from 'react-router-dom'
 
 const ProductsContainer = () => {
 
   const [items, setItems] = useState([]);
 
+  const {categoryid} = useParams()
+  console.log(categoryid)
+
     const getProducts = new Promise((resolve, reject) => {
       setTimeout(() => {
           resolve(listaProductos);
-      }, 5000)
+      }, 500)
     })
 
       const getProducstFromDB = async () => {
         try {
             const result = await getProducts;
-            setItems(result);
+            if(categoryid){
+              const productoPorCategoria = result.filter((producto) => producto.categoria === categoryid)
+              setItems(productoPorCategoria);
+            }else{
+              setItems(result)
+            }
+
         } catch(error) {
             alert('No podemos mostrar los productos en este momento');
         }
@@ -24,7 +34,7 @@ const ProductsContainer = () => {
     useEffect(() => {
         getProducstFromDB();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [categoryid])
 
     useEffect(() =>  {
         console.log(items)
@@ -36,12 +46,13 @@ const ProductsContainer = () => {
         {
           items.map(item => (
             <li key = {item.id}>
-            <Tarjetas imagen = {item.imagen} titulo = {item.titulo} descripcion = {item.descripcion} precio = {item.precio} stock={item.stock}/>
+            <Tarjetas productos = {items} />
             </li>
           ))
         }
       </ul>
     );
+
   }
   
   export default ProductsContainer;

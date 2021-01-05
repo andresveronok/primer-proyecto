@@ -4,38 +4,41 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import ItemCount from '../Tarjetas/ItemCount'
 import {useState} from 'react'
+import {Link} from 'react-router-dom'
 import './Tarjetas.css'
 
-const Tarjetas = ({imagen, titulo, descripcion, precio, stock}) => {
-
+const Tarjetas = ({productos}) => {
+    console.log(productos)
     const [cantidad, setCantidad] = useState(1);
 
     const agregarCarrito = () => {
-        if (cantidad <= stock){
+        if (cantidad <= productos.stock){
             alert(`Agregaste ${cantidad} productos al carrito`);
-            stock = stock - cantidad
+            productos.stock = productos.stock - cantidad
         }else{
-            alert(`No se pudo agregar la cantidad de ${cantidad} productos al carrito porque supera al stock disponible (${stock}).`);
+            alert(`No se pudo agregar la cantidad de ${cantidad} productos al carrito porque supera al stock disponible (${productos.stock}).`);
         }
     }
     return (
         <CardDeck>
             <Card>
-                <Card.Img class='imagen' variant="top" src={imagen} alt="Imagen del producto" />
+                <Card.Img class='imagen' variant="top" src={productos.imagen} alt="Imagen del producto" />
                 <Card.Body>
-                <Card.Title>{titulo}</Card.Title>
+                <Card.Title>{productos.titulo}</Card.Title>
                 <Card.Text>
-                    {descripcion}
+                    {productos.descripcion}
                     <br></br>
-                    {precio}
+                    {productos.precio}
                     <br></br>
                     <ButtonGroup>
-                        <ItemCount cantidad = {cantidad} setCantidad = {setCantidad} stock = {stock}/>
+                        <ItemCount cantidad = {cantidad} setCantidad = {setCantidad} stock = {productos.stock}/>
                     </ButtonGroup>
                 </Card.Text>
                 </Card.Body>
                 <Card.Footer>
                     <Button variant="primary" size="lg" onClick={agregarCarrito}>Agregar al carrito</Button>
+                    <br/>
+                    <Button variant="primary" size="lg"><Link to={`/item/${productos.id}`}>Ver más</Link></Button>
                 </Card.Footer>
             </Card>
         </CardDeck>

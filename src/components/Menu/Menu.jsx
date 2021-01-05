@@ -2,29 +2,30 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { AiOutlineShop } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 function Menu(){
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="#">FLAGHA - Tienda de ropa</Navbar.Brand>
+            <Navbar.Brand><Link to={'/'}>FLAGHA - Tienda de ropa</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-                <Nav.Link href="#">Inicio</Nav.Link>
+                <Nav.Link><Link to={'/'}>Inicio</Link></Nav.Link>
                 <NavDropdown title="Hombre" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#">Remeras</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Jeans</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Pantalones</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Accesorios</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Calzado</NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/remeras'}>Remeras</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/jeans'}>Jeans</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/pantalones'}>Pantalones</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/accesorios'}>Accesorios</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/calzado'}>Calzado</Link></NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Mujer" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#">Remeras</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Jeans</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Pantalones</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Accesorios</NavDropdown.Item>
-                    <NavDropdown.Item href="#">Calzado</NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/remeras'}>Remeras</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/jeans'}>Jeans</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/pantalones'}>Pantalones</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/accesorios'}>Accesorios</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to={'/category/calzado'}>Calzado</Link></NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#">¡SALE!</Nav.Link>
+                <Nav.Link><Link to={'/category/SALE'}>¡SALE!</Link></Nav.Link>
                 <Nav.Link href="#"><AiOutlineShop /></Nav.Link>
             </Navbar.Collapse>
         </Navbar>
