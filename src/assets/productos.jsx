@@ -11,7 +11,7 @@ export const listaProductos = [
     {
         id: 2,
         imagen: 'http://placehold.it/350x400',
-        categoria: 'remera',
+        categoria: 'remeras',
         titulo: 'SegundoProducto', 
         descripcion: 'lorem asdasd asdasdasda asdasd', 
         precio: 400, 

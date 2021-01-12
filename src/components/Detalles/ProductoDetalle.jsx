@@ -1,5 +1,11 @@
+import {useHistory} from 'react-router-dom';
+
 
 const ProductoDetalle = ({item}) => {
+    const history = useHistory();
+    const onAdd = () => {
+        history.push('/carro');
+    }
     console.log(item)
     return (
         <article>
@@ -7,11 +13,9 @@ const ProductoDetalle = ({item}) => {
             <img src={item.imagen} alt=""/>
             <p>{item.descripcion}</p>
             <p>{item.precio}</p>
-            <button>Agregar al carrito</button>
+            <button onClick={onAdd}>Agregar al carrito</button>
         </article>
     )
 }
-
-
 
 export default ProductoDetalle;

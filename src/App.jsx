@@ -1,6 +1,7 @@
 import Menu from './components/Menu/Menu';
 import ProductsContainer from './components/Products/ProductsContainer'
 import Producto from './components/Detalles/Producto'
+import Carro from './components/Carrito/carro'
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
@@ -12,6 +13,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <ProductsContainer />  
+          </Route>
+          <Route path="/carro">
+            <Carro />
           </Route>
           <Route exact path='/category/:categoryid'>
             <ProductsContainer />  

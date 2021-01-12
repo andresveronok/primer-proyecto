@@ -46,7 +46,7 @@ const ProductsContainer = () => {
         {
           items.map(item => (
             <li key = {item.id}>
-            <Tarjetas productos = {items} />
+            <Tarjetas productos = {item} />
             </li>
           ))
         }

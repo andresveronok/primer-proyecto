@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 const Producto = () => {
     const [producto, setProducto] = useState(null);
 
-    const { itemid } = useParams;
+    const { itemid } = useParams();
     console.log(itemid)
 
     const getProducto = new Promise((resolve, reject) => {
