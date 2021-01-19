@@ -18,7 +18,8 @@ const ProductoDetalle = ({item}) => {
         setData({
             ...data, 
             cantidad: data.cantidad + qty,
-            items: [...data.items, item],
+            items: [...data.items, {item: item, cantidad: qty}],
+            precioTotal: data.precioTotal + (item.precio * qty)
         });
         history.push('/carro');
 //        alert(`Agregaste ${qty} productos al carrito`)
