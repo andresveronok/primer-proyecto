@@ -1,13 +1,22 @@
+import {useState} from 'react';
 import Menu from './components/Menu/Menu';
-import ProductsContainer from './components/Products/ProductsContainer'
-import Producto from './components/Detalles/Producto'
-import Carro from './components/Carrito/carro'
+import ProductsContainer from './components/Products/ProductsContainer';
+import Producto from './components/Detalles/Producto';
+import Carro from './components/Carrito/carro';
 import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Store} from './store/index';
 
 function App() {
+  const [data,setData] = useState({
+    items: [],
+    cantidad: 0,
+  })
+
+
   return (
     <>
+    <Store.Provider value={[data,setData]}>
       <BrowserRouter>
         <Menu />
         <Switch>
@@ -25,6 +34,7 @@ function App() {
           </Route>   
         </Switch>
       </BrowserRouter>
+    </Store.Provider>
     </>
   );
 }
